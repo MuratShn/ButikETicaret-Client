@@ -1,0 +1,45 @@
+<nav style="position: sticky;top: 0;background-color: white;z-index: 5;" class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a routerLink="/" class="navbar-brand">MURATBUTİK</a>
+
+        <div class="dropdown mx-5" *ngIf="authService.isAuthenticated"> <!--Buraya rol bazlı guar yapınca bakıcan-->
+            <button *ngIf="user && user.roles[0] == 'SalesPerson'" class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                YÖNETİM PANELİ
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item"  routerLink="/product/add">Ürün Ekle</a></li>
+              <li><a class="dropdown-item" routerLink="/myproducts" >Ürünlerim</a></li>
+            </ul>
+          </div>
+
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+            
+                <div class="navbar-nav ms-auto">
+                    <a routerLink="/favorites" class="nav-item nav-link">Favoriler</a>
+                </div>
+
+                <app-cart-summary></app-cart-summary>
+                
+                <div class="navbar-nav">    
+                <a routerLink="/login" *ngIf="!authService.isAuthenticated" class="nav-item nav-link">Giriş Yap</a>
+                </div>
+
+                <div class="dropdown" *ngIf="authService.isAuthenticated">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hesabım
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li style="margin:auto;overflow: hidden;max-width: 12ch;text-overflow: ellipsis;" *ngIf="user">{{user.userName}}</li>
+                      <li><a class="dropdown-item" routerLink="/account/information">Kullanıcı Bilgilerim</a></li>
+                      <li><a class="dropdown-item" routerLink="/account/address" >Siparişlerim</a></li>
+                      <li><a class="dropdown-item" routerLink="/account/comments" >Yorumlarım</a></li>
+                      <li><a class="dropdown-item" (click)="logout()">Çıkış Yap</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</nav>

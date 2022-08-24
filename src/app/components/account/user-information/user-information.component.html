@@ -1,0 +1,90 @@
+
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="account-info col-12"> Kullanıcı Bilgilerim</div>
+                <div class="col-sm-6" *ngIf="user">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Üyelik Bilgilerim</h5>
+                      
+                      <form [formGroup]="userUpdateForm">
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <div class="row mb-4  mt-4">
+                          <div class="col">
+                            <div class="form-outline">
+                              <label class="form-label" for="form3Example1">Ad</label>
+                              <input type="text" formControlName="name" id="form3Example1" placeholder="{{user.name}}" class="form-control" />
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-outline">
+                              <label class="form-label" for="form3Example2">Soyad</label>
+                              <input type="text" id="form3Example2" formControlName="surname"  placeholder="{{user.surname}}" class="form-control" />
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form3Example3">E-Mail</label>
+
+                          <input type="email" id="form3Example3" formControlName="email"   placeholder="{{user.email}}" class="form-control" />
+                        </div>
+
+                      
+                        <!-- Checkbox -->
+                        <div class="form-check form-check-inline mt-3">
+                            <input class="form-check-input" [checked]="user.gender == '1'" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" />
+                            <label class="form-check-label" for="inlineRadio1">Erkek</label>
+                          </div>
+                          
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input"  [checked]="user.gender == '2'" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" />
+                            <label class="form-check-label" for="inlineRadio2">Kadın</label>
+                          </div>
+                      
+                        <!-- Submit button -->
+                        <br><br>
+                        <button type="button" class="btn btn-outline-success btn-block mb-4"(click)="updateInfo()"  style="width: 100%;">Güncelle</button>
+
+
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Şifre Güncelleme</h5>
+                      
+                      <form [formGroup]="passwordUpdateForm">
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form1Example1">Şuanki Şifre</label>
+                          <input type="password" formControlName="password" autocomplete="off" id="form1Example1" class="form-control" />
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form1Example2">Yeni Şifre</label>
+                            <input type="password"  formControlName="newPassword" autocomplete="off" id="form1Example2" class="form-control" />
+                          </div>
+
+                          <div class="form-outline mb-4">
+                            <label class="form-label" for="form1Example3">Yeni Şifre Tekrar</label>
+                            <input type="password" formControlName="newPasswordConfirm" autocomplete="off" id="form1Example3" class="form-control" />
+                          </div>
+                      
+                      
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-outline-success btn-block mb-4" style="width: 100%;" (click)="updatePassword()">Güncelle</button>
+
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+        </div>

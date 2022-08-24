@@ -1,0 +1,36 @@
+
+<section class="mt-5">
+    <div class="row justify-content-center">
+        
+        <div class="col-2" *ngFor="let item of products" >
+          <div style="text-align: center;">
+            <app-add-product-favorite [product]=item ></app-add-product-favorite>
+          </div>
+            <a class="card" href="product/detail/{{item.id}}/{{item.features[0].color}}" style="cursor:pointer;text-decoration: none;color:black;" >
+                <div class="card text-black">
+
+                <img *ngIf="item.image.length <= 0"  src="assets/images/ImageNotFound.png" class="card-img-top"   />
+                <img *ngIf="item.image.length > 0" [src]="'data:image/png;base64,'+item.image[0].image" class="card-img-top" style="height: 270px;"/>
+                
+                
+                <div class="card-body">
+                  <div class="text-center">
+                    <h5 class="card-title" style="margin: auto; overflow: hidden; max-height: 4ch; text-overflow: ellipsis;">{{item.productName}}</h5>
+                    <p class="text-muted mb-4">{{item.categoryName}}</p>
+                  </div>
+                  <div>
+                  </div>
+
+                  <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                    <span>Fiyat</span><span>{{item.price}}₺</span>
+                   
+                  </div>
+                </div>
+                </div>
+            </a>
+          
+        </div>
+
+        
+    </div>
+    </section>

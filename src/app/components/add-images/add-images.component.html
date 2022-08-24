@@ -1,0 +1,19 @@
+<!-- 
+<div>
+    <form #uploadImage="ngForm" (submit)="onSubmit(uploadImage)">
+        <input type="file" ngModel name="myImage"  (change)="onSelectFile($event)" multiple accept="image/png, image/gif, image/jpeg" />
+        <button type="submit">asd</button>
+    </form>
+</div> -->
+<!-- 
+<input type="file" id="file" type="file" ngModel name="myImage"  (change)="onSelectFile($event)" multiple accept="image/png, image/gif, image/jpeg" />
+<label for="file" class="btn-2">Resimleri Seç</label> -->
+
+<div class="row">
+    <div class="col-8">
+        <input class="form-control"  (change)="onSelectFile($event)" type="file" accept="image/png, image/gif, image/jpeg, image/webp" id="formFileMultiple" multiple />
+    </div>
+    <div class="col-4">
+        <button type="submit" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onSubmit()" class="btn btn-primary">Yükle</button>
+</div>
+</div>

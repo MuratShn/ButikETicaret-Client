@@ -1,0 +1,128 @@
+<app-nav></app-nav>
+
+<div class="alert alert-primary" role="alert">
+  Ürünlere Resim Eklemek Ana Sayfada Gözükmesini Sağlıyacaktır 
+</div>
+
+
+<table class="table table-striped" *ngIf="products">
+  <thead>
+    <tr>
+      <th scope="col">Resim</th>
+      <th scope="col">Ad</th>
+      <th scope="col">Kategorisi</th>
+      <th scope="col">Kalıp</th>
+      <th scope="col">Materyal</th>
+      <th scope="col">Stok</th>
+      <th scope="col">Cinsiyet</th>
+      <th scope="col">Bedenler</th>
+      <th scope="col">Renkler</th>
+      <th scope="col">Fiyat</th>
+      <th scope="col">Resim Ekle</th>
+      <th scope="col" >Düzenle</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let item of products">
+      <th style="background-color: black; height:50px; width:50px"></th>
+      
+      <td>{{item.productName}}</td>
+      <td>{{item.categoryName}}</td>
+      <td>{{item.mold}}</td>
+      <td>{{item.material}}</td>
+      <td>{{item.stok}}</td>
+
+      <td *ngIf="item.gender == '1';else else1">
+        Erkek
+      </td>
+      <ng-template #else1>
+        <td *ngIf="item.gender == '2';else else2">
+          Kadın
+        </td>
+      </ng-template>
+      <ng-template #else2>
+        <td *ngIf="item.gender == '9';else else3">
+         Unisex
+        </td>
+      </ng-template>
+      <ng-template #else3>
+        <td>
+          Bilinmiyor
+        </td>
+      </ng-template>
+
+      <td> 
+        <select name="Bedenler" id="size">
+          <option *ngFor="let x of item.sizes">
+            {{x}}
+          </option>
+        </select>
+      </td>
+      <td> 
+        <select name="Renkler" id="color">
+          <option *ngFor="let x of item.colors">
+            {{x}}
+          </option>
+        </select>
+      </td>
+      <td>{{item.price}}</td>
+      <td>
+        <button (click)="openModal(item.id)" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i style="cursor: pointer;margin-left: 12px;height: 20px;" class="fa-solid fa-images"></i>
+        </button>
+      </td>
+      <td style="text-align: center;"><i style="margin-right: 35px;margin-top:5px;cursor: pointer;" class="fa-solid fa-sliders"></i></td>
+
+    </tr>
+  </tbody>
+</table>  
+
+
+<!-- Modal 1 -->
+<div class="modal fade" *ngIf="product"  id="exampleModal"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Resim Yükleme</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <br>
+        <div *ngFor="let item of product.colors" class="row" style="text-align: center;">
+          <div class="col-md-6">
+            {{item}}
+          </div>
+
+          <div class="col-md-6">
+            <button type="button" (click)="selectedComp(item,product)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">Yükle</button>
+          </div>
+          <br>  <br><hr width="5%" color="green" size="5px" /><br><br>
+          
+        </div>
+        
+
+    
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal 2 -->
+<div class="modal fade" *ngIf="product"  id="exampleModal2"  tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">{{color}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+      </div>
+      <div class="modal-body" style="margin-bottom:40px">
+        <br>
+        <div class="row" style="text-align: center;">  
+          <app-add-images [product]=product [color]=color></app-add-images>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

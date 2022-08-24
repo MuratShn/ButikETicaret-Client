@@ -1,0 +1,112 @@
+<app-nav></app-nav>
+<section class="h-100 h-custom" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-4">
+  
+              <div class="row">
+                <h5 class="mb-3"><a href="/" class="text-body"><i
+                  class="fas fa-long-arrow-alt-left me-2"></i>Alışverişe Devam Et </a>
+                </h5>
+                <hr>
+                <div class="col-lg-7">
+ 
+
+  
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                      <p class="mb-0" style="font-weight: 600;font-size:17px;display: inline;">Sepetim ({{products.length}} Ürün ) </p>
+                    </div>
+                    <p class="mb-0" style="font-weight: 600;font-size:17px;display: inline;margin-right: 60px;">Toplam Tutar {{toplam}} ₺</p>
+                  </div>
+  
+                  <div class="card mb-3"  *ngFor="let item of products">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <div>
+                            <img *ngIf="item.image" [src]="'data:image/png;base64,'+item.image.image" class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                          </div>
+                          <div class="ms-3">
+                            <h5>{{item.productName}}</h5>
+                            <p class="small mb-0">Beden <strong>{{item.size}}</strong></p>
+                            <p class="small mb-0">Renk <strong>{{item.color}}</strong></p>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <div style="width: 50px;">
+                            <h5 class="fw-normal mb-0">{{item.quantity}}</h5>
+                          </div>
+                          <div style="width: 80px;">
+                            <h5 class="mb-0 price">{{item.productPrice}} ₺</h5>
+                          </div>
+                          <a  (click)="deleteCart(item.featuresId,item.color,item.size)" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-5">
+
+                
+                
+                <div class="card mb-4" style="margin-top: 10%;" *ngIf="address">
+                  <div class="card-header py-3">
+                    <h5 class="mb-0" style="text-align: center;">Sipariş Özeti</h5>
+                  </div>
+                  <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                      <li
+                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                        Ürünler
+                        <span>{{toplam}} ₺</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        Kargo
+                        <span>10 ₺</span>
+                      </li>
+                      <li
+                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                        <div>
+                          <strong>Toplam Ücret</strong>
+                        </div>
+                        <span><strong>{{toplam + 10}} ₺</strong></span>
+                      </li>
+                    </ul>
+
+                    <button type="button" (click)="Buy()" style="float: right;" class="btn btn-primary btn-lg btn-block">
+                      Siparişi Tamamla
+                    </button>
+                  </div>
+                </div>
+
+  
+                </div> 
+  
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex align-items-center mt-3">
+        <div class="row">
+        <div class="col-4" *ngFor=" let item of address;let i = index">
+          <div class="card bg-light mb-3" style="max-width: 20rem;">
+              <div class="card-header"><input type="radio" id="address" name="age" value="{{item.id}}"> Adres {{i + 1}} </div>
+              <div class="card-body">
+              <h5 class="card-title">{{item.title}}</h5>
+              <p class="card-text">{{item.adress}}</p>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+  </section>

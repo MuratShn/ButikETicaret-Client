@@ -1,0 +1,54 @@
+<app-nav></app-nav>
+<br>
+
+<form [formGroup]="productAddForm">
+    <h5>Ürün Ekle</h5>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Ürün Adı</label>
+      <input type="" class="form-control" formControlName="productName" id="exampleFormControlInput1" placeholder="">
+    </div>
+
+    <div class="form-group">
+        <label for="Material">Materyal</label>
+        <input type="text" formControlName="material" name="Material" id="Material" class="form-control">
+    </div>
+
+    <br>
+    <label>Kategori</label>
+    <select class="form-group form-select" formControlName="categoryId" aria-label="Default select example">
+      <option *ngFor="let item of categories;" value="{{item.id}}" > {{item.name}}</option>
+    </select>
+    <br>
+
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" formControlName="gender" type="radio" id="inlineRadio1" value="1">
+        <label class="form-check-label" for="inlineRadio1">Erkek</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" formControlName="gender" type="radio" id="inlineRadio2" value="2">
+        <label class="form-check-label" for="inlineRadio2">Kadın</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" formControlName="gender" type="radio" id="inlineRadio3" value="9">
+        <label class="form-check-label" for="inlineRadio3">Unisex</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" formControlName="gender" type="radio" id="inlineRadio3" value="0">
+        <label class="form-check-label" for="inlineRadio3">Belirsiz</label>
+      </div>
+
+    <div class="form-group">
+      <label for="Kalıp">Kalıp</label>
+      <input type="text" formControlName="mold" name="Kalıp" id="Kalıp" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="Stok">Stok</label>
+        <input type="number" name="Stok" formControlName="stok" id="Stok" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="Stok">Fiyat</label>
+        <input type="number" name="Fiyat" id="Fiyat" formControlName="price" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="addProduct()">Ekle</button>
+  </form>

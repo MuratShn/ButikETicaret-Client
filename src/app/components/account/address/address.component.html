@@ -1,0 +1,24 @@
+
+<div class="account-info col-12"> Adres Bilgilerim <app-add-address style="float: right;margin-top: -8px;"></app-add-address> </div>
+
+<div class="col-12">
+    <div class="row" style="padding: 5px;">
+
+        <div class="col-4" *ngFor=" let item of address;let i = index">
+            <div class="card bg-light mb-3" style="max-width: 20rem;">
+                <div class="card-header">Adres {{i + 1}}</div>
+                <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.adress}}</p>
+                <button class="btn"type="button" (click)="deleteAddress(item)" ><i class="fa-solid fa-trash"></i>  Sil</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+

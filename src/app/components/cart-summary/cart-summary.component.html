@@ -1,0 +1,43 @@
+    
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sepet <span class="badge badge-light" style="background: rgb(167, 162, 162);" *ngIf="products.length !=0 ">{{products.length}}</span>
+                    </button>
+                    
+                <ul  class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    
+
+                                <section *ngIf="products.length > 0">
+                                    <li class="list-group-item">
+                                        <div style="font-size: 15px;font-weight: 600;">Sepetim ({{products.length}} Ürün)</div>
+                                    </li>
+                                    <li  *ngFor="let item of products" style="width: 300px;margin: 15px;margin-top: 10px;">
+                                        <div class="row">
+
+                                        <div class="col-4">
+                                            <img *ngIf="item.image" style="height: 90px;width:75px" [src]="'data:image/png;base64,'+item.image.image"/>
+                                            <img *ngIf="!item.image" style="height: 90px;width:75px" src="../../../assets/images/ImageNotFound.png">
+                                            
+                                            <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" /> -->
+                                        </div>
+                                        <div class="col-8">
+                                        <span>{{item.productName}}</span><br>
+                                        <span style="color: #f27a1a;">{{item.productPrice}} ₺</span>
+                                        <span style="margin-left:15px;color:#988d91;">Adet:{{item.quantity}}</span>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    </li>
+                                    <li style="text-align: center;margin-top: -4px;">
+                                    <a  href="/basket" style="margin-bottom: 4px;" class="btn btn-outline-success">Sepete Git</a>
+
+                                    </li>
+                                </section>
+
+                                <section *ngIf="products.length <= 0">
+                                    <div style="text-align:center ;">Sepet Boş</div>
+                                </section>
+                                
+                    </ul>
+
+                    <div>

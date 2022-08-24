@@ -1,0 +1,18 @@
+.account-info{
+    border-radius: 6px;
+    border: solid 1px #e2e2e2;
+    padding: 17px;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+img{
+    height: 150px;
+    width: 120px;
+    border-radius: 20px;
+}
+.row{
+    margin-top: 20px;
+}

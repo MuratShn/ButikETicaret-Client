@@ -1,0 +1,95 @@
+
+
+<div class="card" style="margin-top: 50px;">
+
+	<article class="card-group-item" *ngIf="filtered">
+		<header class="card-header">
+			<h6 class="title">Filtreler </h6>
+		</header>
+		<div class="filter-content">	
+			<div class="card-body">
+				<div style="text-align: center;font-weight: 600;font-size: 17px;cursor: pointer;" (click)="refresh()">Tüm Filtleri temizle</div>
+			</div>
+		</div>
+		<div class="filter-content">	
+			<div class="card-body">
+				<span *ngFor="let filter of filtered" class="badge badge-primary" style="background-color: green;margin-right: 2px;">{{filter}} </span>
+			</div>
+		</div>
+	</article> <!-- card-group-item.// -->
+
+
+	<br>
+
+	<article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Cinsiyet </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body">
+                <ul style="padding-left: 0px;">
+                    <li class="list-group-item" (click)="gender('1')">Erkek</li>
+                    <li class="list-group-item" (click)="gender('2')">Kadın</li>
+					<li class="list-group-item" (click)="gender('9')">Unisex</li>
+
+                </ul>
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+
+    <article class="card-group-item">
+		<header class="card-header"><h6 class="title">Kategori </h6></header>
+		<div class="filter-content">
+
+			<div class="card-body">
+                <ul style="padding-left: 0px;">
+                    <li class="list-group-item" *ngFor="let item of categories" (click)="category(item.name)">{{item.name}}</li>
+                </ul>
+			</div>
+
+		</div>
+	</article> <!-- card-group-item.// -->
+
+	<article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Beden </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body">
+                <ul style="padding-left: 0px;">
+                    <li class="list-group-item"  (click)="size('Small')"  >Small</li>
+                    <li class="list-group-item"  (click)="size('Medium')" >Medium</li>
+                    <li class="list-group-item"  (click)="size('Large')" >Large</li>
+                    <li class="list-group-item"  (click)="size('XLarge')" >XLarge</li>
+                </ul>
+            </div>
+		</div>
+	</article> <!-- card-group-item.// -->
+
+	
+	<article class="card-group-item">
+		<header class="card-header"><h6 class="title">Renk</h6></header>
+		<div class="filter-content">
+			<div class="card-body">
+
+				<label (click)="color('Kırmızı')" class="btn btn-danger">
+                    Kırmızı
+				</label>
+
+				<label (click)="color('Mavi')" style="margin-left:3px;margin-top: 3px;" class="btn btn-success">
+				    Mavi
+				</label>
+
+				<label (click)="color('Beyaz')" style="margin-left:3px;margin-top: 3px;" class="btn btn-primary">
+                    Beyaz
+				</label>
+
+				<label (click)="color('Siyah')" style="margin-left:3px;margin-top: 3px;" class="btn btn-primary">
+                    Siyah
+				</label>
+
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+
+</div> 

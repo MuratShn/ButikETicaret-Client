@@ -1,0 +1,93 @@
+<app-nav></app-nav>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+<style>
+    .table td, .table th {
+        padding: 4px;
+    }
+</style>
+
+<div class="row mt-5" *ngIf="product">
+    <div class="col-md-6">
+        <img src = "https://cdn.evkur.com.tr/c/Product/thumbs/eos-2000d_hs9a8q_1920.jpg" class="img-fluid w-50 h-150 rounded">
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{product.productName}}  #{{product.id}} </h1>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div>Stok : <strong>{{product.stok}}</strong></div>
+                <div>Kategori : <strong>{{product.categoryId}}</strong></div>
+                <div>Kalıp : <strong>{{product.mold}}</strong></div>
+                <div>Materyal : <strong>{{product.material}}</strong></div>
+                <div *ngIf="product.gender == '1';else else1">
+                  <span> Cinsiyet : <strong >Erkek</strong></span> 
+                </div>
+                <ng-template #else1>
+                  <div *ngIf="product.gender == '2';else else2">
+                    <span> Cinsiyet : <strong >Kadın</strong></span> 
+                  </div>
+                </ng-template>
+
+                <ng-template #else2>
+                  <div *ngIf="product.gender == '9';else else3">
+                    <span> Cinsiyet : <strong >Unisex</strong></span> 
+                  </div>
+                </ng-template>
+
+                <ng-template #else3>
+                  <div>
+                    <span> Cinsiyet : <strong >Bilinmiyor</strong></span> 
+                  </div>
+                </ng-template>
+
+                <div>Fiyat : <strong>{{product.price}}</strong></div>
+                <!-- <div id="description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, unde! Lorem ipsum dolor sit amet consectetur, adipisicing elit
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-primary" role="alert">
+    Ürünün her varyant'ını eklemek zorundasınız <a class="alert-link">Varyant Ekleye  </a> tıklayarak varyanltlarınızı oluşturunuz
+
+</div>
+
+
+<form (submit)="Finish()">
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Beden</th>
+          <th scope="col">Adet</th>
+          <th scope="col">Renk</th>
+          <th scope="col">Sil</th>
+        </tr>
+      </thead>
+      <tbody>
+          
+        <button (click)="addVaryant()" type="button" class="btn btn-primary mt-2 mb-2">Varyant Ekle</button>
+        <tr class="table-success" *ngFor="let i of varyantarr;let j = index"  id="{{j}}">
+          <td>
+            <select class="form-select" aria-label="Default select example">
+              <option selected value="Small">Small</option>
+              <option value="Medium">Medium</option>
+              <option value="Large">Large</option>
+              <option value="XLarge">XLarge</option>
+            </select>
+          </td>
+          <td style="width: 150px;"><input  type="number" class="form-control"></td>
+          <td style="width: 150px;"><input  type="text" class="form-control"></td>
+          <td (click)="dellVaryant(j)" style="text-align: center;cursor: pointer;"><i style="margin-top:10px ;" class="fa-solid fa-trash-can"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-success">Ekle</button>
+</form>
+

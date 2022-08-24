@@ -1,0 +1,116 @@
+
+<div class="account-info col-12">Siparişlerim </div>
+
+<div class="col-12">
+                    <div class="row" style="padding: 5px;">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                           
+                              <div class="card" style="border-radius: 10px;">
+                                
+                                <div class="card-body p-4" *ngFor="let order of orders">
+                                  <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <p class="small text-muted mb-0">Sipariş Tarihi : {{ order.orderDate }} </p>
+                                    <p class="small text-muted mb-0">Tutar : {{order.orderPrice}} ₺</p>
+                                    <p class="small text-muted mb-0">Sipariş Özeti : {{order.orderDetail.length}}</p>
+                                    <p class="small text-muted mb-0">Fatura No : {{ order.id }} </p>
+
+                                  </div>
+                                  <div class="card shadow-0 border mb-4">
+                                    <div class="card-body">
+
+                                      <div class="row" *ngFor="let item of order.orderDetail">
+                                        <div class="col-md-2">
+                                          <img *ngIf="item.image != null" [src]="'data:image/png;base64,'+item.image"
+                                            class="img-fluid" alt="Phone">
+                                          <img *ngIf="item.image == null" src="../../../assets/images/ImageNotFound.png" height="100%" width="100%" class="card-img-top" alt="Laptop"/>
+
+                                        </div>
+                                        <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                          <p class="text-muted mb-0">{{item.productName}}</p>
+                                        </div>
+                                        <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                          <p class="text-muted mb-0 small">Renk: {{item.color}}</p>
+                                        </div>
+                                        <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
+                                          <p class="text-muted mb-0 small">Beden: {{item.size}}</p>
+                                        </div>
+                                        <div class="col-md-1 text-center d-flex justify-content-center align-items-center">
+                                          <p class="text-muted mb-0 small">Adet: {{item.quantitiy}}</p>
+                                        </div>
+                                        <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                          <p class="text-muted mb-0 small">{{item.price}} ₺</p>
+                                        </div>
+                                        <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                          <button class=" btn btn-success" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" (click)="commentModal(item)">Ürünü değerlendir</button>
+                                        </div>
+
+                                      </div>
+
+                                      
+                                    </div>
+                                  </div>
+                      
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+</div>
+
+
+<!-- 
+<div class="d-flex justify-content-between pt-2">
+    <p class="fw-bold mb-0">Order Details</p>
+    <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> $898.00</p>
+  </div>
+
+  <div class="d-flex justify-content-between pt-2">
+    <p class="text-muted mb-0">Invoice Number : 788152</p>
+    <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $19.00</p>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
+    <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
+  </div>
+
+  <div class="d-flex justify-content-between mb-5">
+    <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p>
+    <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
+  </div> -->
+
+  <div class="modal fade"  style="margin-top: 150px;" data-bs-backdrop="static" data-bs-keyboard="false"  id="exampleModal"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ürünü nasıl buldunuz</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#exampleModal" id="closemodal"></button>
+        </div>
+  
+        <div class="modal-body">
+          
+
+  
+              <div class="form-group">
+                <label for="exampleFormControlInput1" style="font-size: 15px;font-weight:500" *ngIf="selectedOrder">Ürün Adı: {{selectedOrder.productName}}</label>
+              </div>
+              <br>
+
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" style="font-size: 15px;font-weight:500">Yorumunuz</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+              </div>
+  
+
+
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" style="width: 100%;" (click)="addComment(selectedOrder.productId,selectedOrder.color)" class="btn btn-primary">Yorum Yap</button>
+        </div>
+  
+      </div>
+    </div>
+</div>
+  

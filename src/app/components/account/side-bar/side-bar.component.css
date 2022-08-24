@@ -1,0 +1,28 @@
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #fff1e6;
+    color: black;
+}
+.list-group{    
+    font-weight: 600;
+}
+svg{
+    font-size: 15px;
+    font-weight: 500;
+    color: #f27a1a;
+}
+.list-group-item{
+    cursor: pointer;
+}
+.list-group-item+.list-group-item:hover{
+    border-radius: 10%;
+    background: #f3f3f3;
+    padding-bottom: 15px;
+    transition: all .3s ease;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}

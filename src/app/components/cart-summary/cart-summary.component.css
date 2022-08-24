@@ -1,0 +1,25 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+ .navbar-light .navbar-nav .nav-link{
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+    padding-left: 5px;
+    margin-top: 2px;}
+    
+    #dropdownMenuButton1{
+        -webkit-font-smoothing: antialiased;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333333;
+        padding-left: 5px;
+        margin-top: 3px;}
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+         }
+         

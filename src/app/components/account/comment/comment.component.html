@@ -1,0 +1,33 @@
+
+<div class="account-info col-12">Yorumlarım </div>
+
+<div class="col-12">
+    <div class="row" style="padding: 5px;">
+                            <div class="row">
+
+                                <div class="col-sm-6 mt-3" *ngFor="let item of comments">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-3">
+
+                                                <img height="100%" width="100%" *ngIf="item.image != null" [src]="'data:image/png;base64,'+item.image"
+                                                class="img-fluid" alt="Phone">
+                                              <img *ngIf="item.image == null" height="100%" width="100%"  src="../../../assets/images/ImageNotFound.png" height="100%" width="100%" class="card-img-top" alt="Laptop"/>
+    
+                                            </div>
+                                            
+                                            <div class="col-9" style="cursor: pointer;" routerLink="/product/detail/{{item.productId}}/{{item.color}}">
+                                                <div style="font-size:17x;font-weight: 600;" class="card-title">{{item.productName}}</div>
+                                                <p class="card-text">{{item.comment}} <br> <span style="float: right;" >Tarih: {{item.date}}</span></p>
+                                            </div>
+                                            
+                                        </div>
+
+                                    
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+    </div>
+</div>
